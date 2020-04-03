@@ -14,7 +14,12 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - run: sudo apt-get install -y -q asciidoctor pandoc
+    - run: sudo apt-get install -y -q asciidoctor
+
+    - name: install pandoc
+    - run: |
+      wget https://github.com/jgm/pandoc/releases/download/2.9.2.1/pandoc-2.9.2.1-1-amd64.deb
+      sudo dpkg -i pandoc-2.9.2.1-1-amd64.deb
 
     - uses: actions/setup-java@v1
       with:
