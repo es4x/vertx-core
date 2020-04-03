@@ -29,13 +29,18 @@ jobs:
     - name: Build with Maven
       run: mvn -B generate-sources
 
-    # - name: Commit files
-    #   run: |
-    #     git config --local user.email "action@github.com"
-    #     git config --local user.name "GitHub Action"
-    #     git commit -m "Add changes" -a
+    - name: Copy generated manual
+      run: |
+        rm -Rf manual
+        cp -Rf target/manual .
 
-    # - name: Push changes
-    #   uses: ad-m/github-push-action@master
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Add changes" -a
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
