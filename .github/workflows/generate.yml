@@ -19,6 +19,13 @@ jobs:
       with:
         java-version: 11
 
+    - uses: actions/setup-node@v1
+      with:
+      node-version: '12.x'
+
+    - name: Setup typedoc
+      run: sudo npm install -g typedoc
+
     - uses: actions/cache@v1
       with:
         path: ~/.m2/repository
@@ -29,17 +36,17 @@ jobs:
     - name: Build with Maven
       run: mvn -B generate-sources
 
-    - name: Copy generated manual
-      run: |
-        rm -Rf manual
-        cp -Rf target/manual .
-
-    - name: Commit files
+    - name: Setup git
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+
+    - name: Save generated manual
+      run: |
+        rm -Rf manual
+        cp -Rf target/manual .
         git add manual
-        git commit -m "Add changes" -a
+        git commit -m "Save generated manual changes" -a
 
     - name: Push changes
       uses: ad-m/github-push-action@master
