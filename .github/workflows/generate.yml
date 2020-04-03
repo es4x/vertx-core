@@ -59,6 +59,7 @@ jobs:
             cp "${manual}.md" ../manual/
           done
 
+        cd ..
         git add manual
         git commit -m "Save generated manual changes" -a
 
