@@ -60,7 +60,7 @@ Core API:
 <dependency>
   <groupId>io.vertx</groupId>
   <artifactId>vertx-core</artifactId>
-  <version>3.6.3</version>
+  <version>3.8.4</version>
 </dependency>
 ```
 
@@ -70,7 +70,7 @@ Core API:
 
 ``` groovy
 dependencies {
-  compile 'io.vertx:vertx-core:3.6.3'
+  compile 'io.vertx:vertx-core:3.8.4'
 }
 ```
 
